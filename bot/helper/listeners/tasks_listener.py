@@ -404,7 +404,7 @@ class MirrorLeechListener:
             msg += f"\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
             if mime_type != 0:
                 msg += f'\n<b>☞ Corrupted Files</b>: {mime_type}'
-            msg += f'\n\n<b>☞ Leech_By</b>: {self.tag}'
+            msg += f"\n\n<b>☞ Leech_By</b>: {self.tag}\n\n"
             #msg += f"\n<b>Upload</b>: {self.extra_details['mode']}\n\n"
             if not files:
                 await sendMessage(self.message, msg)
