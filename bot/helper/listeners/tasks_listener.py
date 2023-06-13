@@ -533,7 +533,7 @@ class MirrorLeechListener:
             if self.sameDir and self.uid in self.sameDir['tasks']:
                 self.sameDir['tasks'].remove(self.uid)
                 self.sameDir['total'] -= 1
-        msg = f"<b>☞</b> {self.tag} Download: {escape(str(error))}\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
+        msg = f"<b>☞</b>Hi {self.tag}, {escape(str(error))}\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
         msg += f"\n<b>☞ Upload</b>: {self.extra_details['mode']}"
         await sendMessage(self.message, msg, button)
         if self.logMessage:
@@ -575,7 +575,7 @@ class MirrorLeechListener:
             count = len(download_dict)
             if self.uid in self.sameDir:
                 self.sameDir.remove(self.uid)
-        msg = f"<b>☞</b> {self.tag} {escape(str(error))}\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
+        msg = f"<b>☞Hi </b> {self.tag}, {escape(str(error))}\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
         msg += f"\n<b>☞ Upload</b>: {self.extra_details['mode']}"
         await sendMessage(self.message, msg)
         if self.logMessage:
