@@ -118,7 +118,7 @@ class MirrorLeechListener:
         if self.isSuperGroup:
             self.extra_details['source'] = f"<a href='{self.message.link}'>{source}</a>"
         else:
-            self.extra_details['source'] = f"<i>{source}</i>"
+            self.extra_details['source'] = f"<i>Anoymous</i>"
 
     async def onDownloadStart(self):
         if self.dmMessage == 'BotStarted':

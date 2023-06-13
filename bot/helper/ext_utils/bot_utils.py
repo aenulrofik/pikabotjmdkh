@@ -111,7 +111,7 @@ def bt_selection_buttons(id_, isCanCncl=True):
 
 
 async def get_telegraph_list(telegraph_content):
-    path = [(await telegraph.create_page(title='Jmdkh-mltb Drive Search', content=content))["path"] for content in telegraph_content]
+    path = [(await telegraph.create_page(title='Pikabot Drive Search', content=content))["path"] for content in telegraph_content]
     if len(path) > 1:
         await telegraph.edit_telegraph(path, telegraph_content)
     buttons = ButtonMaker()
