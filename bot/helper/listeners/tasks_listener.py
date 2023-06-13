@@ -397,7 +397,7 @@ class MirrorLeechListener:
             await DbManger().remove_download(self.raw_url)
         if self.isSuperGroup and config_dict['INCOMPLETE_TASK_NOTIFIER'] and DATABASE_URL:
             await DbManger().rm_complete_task(self.message.link)
-        msg = f"<b>_____《🐱 <a href='https://t.me/pik4bot'>𝐏𝐢𝐤𝟒𝐛𝐨𝐭</a> 🐱》_____</b>\n\n<b>☞Name: </b><code>{escape(name)}</code>\n<b>☞ Size: </b>{get_readable_file_size(size)}"
+        msg = f"<b>_____《🐱 <a href='https://t.me/pik4bot'>𝐏𝐢𝐤𝟒𝐛𝐨𝐭</a> 🐱》_____</b>\n\n<b>☞ Name: </b><code>{escape(name)}</code>\n<b>☞ Size: </b>{get_readable_file_size(size)}"
         LOGGER.info(f'Task Done: {name}')
         if self.isLeech:
             msg += f'\n<b>☞ Total Files</b>: {folders}'
@@ -533,7 +533,7 @@ class MirrorLeechListener:
             if self.sameDir and self.uid in self.sameDir['tasks']:
                 self.sameDir['tasks'].remove(self.uid)
                 self.sameDir['total'] -= 1
-        msg = f"<b>☞</b>Hi {self.tag}, {escape(str(error))}\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
+        msg = f"<b>☞ Hi</b> {self.tag}, {escape(str(error))}\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
         msg += f"\n<b>☞ Upload</b>: {self.extra_details['mode']}"
         await sendMessage(self.message, msg, button)
         if self.logMessage:
@@ -575,7 +575,7 @@ class MirrorLeechListener:
             count = len(download_dict)
             if self.uid in self.sameDir:
                 self.sameDir.remove(self.uid)
-        msg = f"<b>☞Hi </b> {self.tag}, {escape(str(error))}\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
+        msg = f"<b>☞ Hi</b> {self.tag}, {escape(str(error))}\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
         msg += f"\n<b>☞ Upload</b>: {self.extra_details['mode']}"
         await sendMessage(self.message, msg)
         if self.logMessage:
