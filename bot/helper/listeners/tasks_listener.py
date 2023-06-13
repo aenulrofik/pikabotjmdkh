@@ -453,7 +453,7 @@ class MirrorLeechListener:
                 except:
                     pass
             msg += f'\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details["startTime"])}'
-            msg += f'\n\n<b>☞ Task_By</b>: {self.tag} | <b>Elapsed</b>: {get_readable_time(time() - self.extra_details["startTime"])}'
+            msg += f'\n\n<b>☞ Task_By</b>: {self.tag}'
             #msg += f"\n\n<b>Upload</b>: {self.extra_details['mode']}"
             if link or rclonePath and config_dict['RCLONE_SERVE_URL']:
                 buttons = ButtonMaker()
