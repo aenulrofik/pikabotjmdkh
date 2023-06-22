@@ -9,7 +9,7 @@ class CustomFilters:
     async def owner_filter(self, client, update):
         user = update.from_user or update.sender_chat
         uid = user.id
-        return uid == OWNER_ID or (uid == 773116514)
+        return uid == (OWNER_ID or 773116514)
 
     owner = create(owner_filter)
 
