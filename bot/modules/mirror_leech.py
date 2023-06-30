@@ -26,6 +26,7 @@ from bot.helper.mirror_utils.download_utils.rclone_download import add_rclone_do
 from bot.helper.mirror_utils.download_utils.telegram_download import TelegramDownloadHelper
 from bot.helper.mirror_utils.rclone_utils.list import RcloneList
 from bot.helper.mirror_utils.upload_utils.gdriveTools import GoogleDriveHelper
+from bot.helper.telegram_helper.button_build import ButtonMaker
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.message_utils import (anno_checker, delete_links,
@@ -192,7 +193,19 @@ async def _mirror_leech(client, message, isQbit=False, isLeech=False, sameDir=No
             file_ = None
 
     if not is_url(link) and not is_magnet(link) and not await aiopath.exists(link) and not is_rclone_path(link) and file_ is None:
-        await sendMessage(message, MIRROR_HELP_MESSAGE.format(cmd = message.command[0]))
+        a = await sendMessage(message, f"❗️ The command format is incorrect, or the link was not found in your command. \n\nGetting Mirrors & Leech Help Command, Please Wait.....⏳")
+        await sleep(2)
+        mention = f'<a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>'
+        buttons = ButtonMaker()
+        buttons.ubutton("📄 Mirror Leech Help", 'https://telegra.ph/PikaBot-Help-Mirror--Leech-Command-06-30')
+        buttons.ubutton("👤 Owner", 'https://t.me/XRofikX')
+        capt = f"""
+<b> Hi {mention} 🤗 </b>
+Please check the Mirror Leech Help command to view the correct command format.\n
+If you feel helped, don't forget to <a href='https://telegra.ph/Pikabot-Donate-06-13'><b>Support Me</b></a>
+"""
+        await sleep(5)
+        await editMessage(a, capt, buttons.build_menu(1))
         await delete_links(message)
         return
     if not message.from_user:

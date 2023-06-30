@@ -25,6 +25,7 @@ from bot.helper.mirror_utils.rclone_utils.transfer import RcloneTransferHelper
 from bot.helper.mirror_utils.status_utils.gdrive_status import GdriveStatus
 from bot.helper.mirror_utils.status_utils.rclone_status import RcloneStatus
 from bot.helper.mirror_utils.upload_utils.gdriveTools import GoogleDriveHelper
+from bot.helper.telegram_helper.button_build import ButtonMaker
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.message_utils import (anno_checker,
@@ -243,7 +244,19 @@ async def clone(client, message):
     __run_multi()
 
     if not link:
-        await sendMessage(message, CLONE_HELP_MESSAGE.format_map({'cmd': message.command[0]}))
+        a = await sendMessage(message, f"❗️ The command format is incorrect, or the link was not found in your command. \n\nGetting Clone Help Command, Please Wait.....⏳")
+        await sleep(2)
+        mention = f'<a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>'
+        buttons = ButtonMaker()
+        buttons.ubutton("📄 Clone Help", 'https://telegra.ph/Pik4Bot-Help-Clone-Command-06-30')
+        buttons.ubutton("👤 Owner", 'https://t.me/XRofikX')
+        capt = f"""
+<b> Hi {mention} 🤗 </b>
+Please check the Clone Help command to view the correct command format.\n
+If you feel helped, don't forget to <a href='https://telegra.ph/Pikabot-Donate-06-13'><b>Support Me</b></a>
+"""
+        await sleep(3)
+        await editMessage(a, capt, buttons.build_menu(1))
         await delete_links(message)
         return
 
