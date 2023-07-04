@@ -32,7 +32,7 @@ from .modules import (anonymous, authorize, bot_settings, cancel_mirror,
                       category_select, clone, eval, gd_count, gd_delete,
                       gd_list, leech_del, mirror_leech, rmdb, rss,
                       save_message, shell, status, torrent_search,
-                      torrent_select, users_settings, ytdlp, broadcast)
+                      torrent_select, users_settings, ytdlp, broadcast, speedtest)
 
 
 async def stats(_, message):
@@ -40,12 +40,16 @@ async def stats(_, message):
     swap = swap_memory()
     memory = virtual_memory()
     net_io = net_io_counters()
+    # Neofetch
+    neofetch = check_output(
+        ["neofetch --shell_version off --stdout"], shell=True).decode()
     if await aiopath.exists('.git'):
         last_commit = await cmd_exec("git log -1 --date=short --pretty=format:'%cd \n<b>├ From</b>: %cr'", True)
         last_commit = last_commit[0]
     else:
         last_commit = 'No UPSTREAM_REPO'
     stats = f'<b>  《🐱 PIKABOT STATS 🐱》</b>\n  ┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅\n'\
+            f'<code>{neofetch}</code>\n'\
             f'<b>╭ Commit Date</b>: {last_commit}\n'\
             f'<b>├ Bot Uptime</b>: {get_readable_time(time() - botStartTime)}\n'\
             f'<b>├ OS Uptime</b>: {get_readable_time(time() - boot_time())}\n'\

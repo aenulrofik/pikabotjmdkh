@@ -40,6 +40,7 @@ class _BotCommands:
         self.RmdbCommand = f'rmdb{CMD_SUFFIX}'
         self.Broadcast = f'broadcast{CMD_SUFFIX}'
         self.CopysCommand = f'copys{CMD_SUFFIX}'
+        self.SpeedtsCommand = [f'speedtest{CMD_SUFFIX}', f'speed{CMD_SUFFIX}']
 
 
 BotCommands = _BotCommands()
