@@ -5,6 +5,8 @@ from signal import SIGINT, signal
 from sys import executable
 from time import time
 from uuid import uuid4
+from subprocess import check_output
+
 
 from aiofiles import open as aiopen
 from aiofiles.os import path as aiopath
@@ -49,7 +51,7 @@ async def stats(_, message):
     else:
         last_commit = 'No UPSTREAM_REPO'
     stats = f'<b>  《🐱 PIKABOT STATS 🐱》</b>\n  ┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅\n'\
-            f'<code>{neofetch}</code>\n'\
+            f'<code>{neofetch}</code>'\
             f'<b>╭ Commit Date</b>: {last_commit}\n'\
             f'<b>├ Bot Uptime</b>: {get_readable_time(time() - botStartTime)}\n'\
             f'<b>├ OS Uptime</b>: {get_readable_time(time() - boot_time())}\n'\
