@@ -541,6 +541,7 @@ def terabox(url) -> str:
 
     return dlink
 
+
 def filepress(url):
     cget = create_scraper().request
     try:
