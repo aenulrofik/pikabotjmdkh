@@ -91,7 +91,7 @@ async def start(_, message):
     else:
         start_string = 'Hi, Pik4bot is here 🐱\n' \
                     'This bot can Mirror all your links To Google Drive or leech to Telegram !\n\n' \
-                    'PM to the <b><a href="https://t.me/XRofikX">"<b>Owner</b>"</a> if you want to use this bot in private message. \n Or you can join <b><a href="https://t.me/+67WpWvq1-RBhYjNl">"<b>This Group</b>"</a></b> to start use this bot without permission.'
+                    '• PM to the <b><a href="https://t.me/XRofikX">"<b>Owner</b>"</a> if you want to use this bot in private message. \n• Or you can join <b><a href="https://t.me/+67WpWvq1-RBhYjNl">"<b>This Group</b>"</a></b> to start use this bot without permission.'
     await sendMessage(message, start_string)
 
 
