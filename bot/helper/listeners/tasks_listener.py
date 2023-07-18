@@ -454,7 +454,7 @@ class MirrorLeechListener:
                     pass
             msg += f'\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details["startTime"])}'
             msg += f'\n\n<b>☞ Task_By</b>: {self.tag}'
-            msg += f"\n<b>❗ Files on this drive are temporary, please download or backup your files immediately.</b>"
+            msg += f"\n\n<b>❗ Files on this drive are temporary, please download or backup your files immediately.</b>"
             if link or rclonePath and config_dict['RCLONE_SERVE_URL']:
                 buttons = ButtonMaker()
                 if link:
