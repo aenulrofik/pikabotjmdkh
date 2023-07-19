@@ -48,11 +48,12 @@ async def speedtest(_, message):
     buttons = ButtonMaker()
     buttons.ubutton("🌟 Suport Me", "https://telegra.ph/Pikabot-Donate-06-13", 'header')
     try:
-        pho = await sendMessage(message, string_speed, photo=path)
-        await deleteMessage(speed)
+       sp = await message.reply_photo(photo=path, reply_to_message_id=message.id,
+                                                 caption=string_speed, reply_markup=buttons.build_menu(1), disable_notification=True)
+       await deleteMessage(speed)
     except Exception as e:
         LOGGER.error(str(e))
-        pho = await editMessage(speed, string_speed)
+        sp = await editMessage(speed, string_speed)
 
 bot.add_handler(MessageHandler(speedtest, filters=command(
     BotCommands.SpeedtsCommand) & CustomFilters.authorized))
